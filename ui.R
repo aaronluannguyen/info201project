@@ -1,9 +1,17 @@
-# User Interface file
-
-# Load necessary libraries
+library(dplyr)
+library(plotly)
 library(shiny)
-
-# User interface here
 shinyUI(fluidPage(
   
-))
+  # Radio buttons
+  sidebarLayout(
+    sidebarPanel(
+      
+      selectInput('cityname', 'City', choices = c("AUBURN", "BURIEN", "SEATTLE"), selected = "BURIEN"),
+      actionButton("goButton", "Go!")
+    ),
+    mainPanel(plotlyOutput("scatter"))
+  ))
+  
+  
+)
