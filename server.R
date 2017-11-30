@@ -15,9 +15,40 @@ library(plotly)
 
 # Load king county police data 
 # Remember to set working directory in console to this project
-data <- read.csv("data/king_county_data.csv")
+police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', stringsAsFactors = FALSE)
 
 # Server side 
 shinyServer(function(input, output) {
+  police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', stringsAsFactors = FALSE)
+  
+  abc <- table(police.activity.data$city)
+
+  city.data<- police.activity.data%>%filter(city == "RAVENSDALE")
+  parent.crime.type <- unique(police.activity.data$parent_incident_type)
+  x <- sort(unique(police.activity.data$parent_incident_type))
+  
+  y <- c(
+    nrow(city.data %>% filter(parent_incident_type == "Arson"))
+    , nrow(city.data %>% filter(parent_incident_type == "Assault"))
+    , nrow(city.data %>% filter(parent_incident_type == "Assault with Deadly Weapon"))
+    , nrow(city.data %>% filter(parent_incident_type == "Breaking & Entering"))
+    , nrow(city.data %>% filter(parent_incident_type == "Disorder"))
+    , nrow(city.data %>% filter(parent_incident_type == "Drugs"))
+    , nrow(city.data %>% filter(parent_incident_type == "Liquor"))
+    , nrow(city.data %>% filter(parent_incident_type == "Other"))
+    , nrow(city.data %>% filter(parent_incident_type == "Other Sexual Offense"))
+    , nrow(city.data %>% filter(parent_incident_type == "Property Crime"))
+    , nrow(city.data %>% filter(parent_incident_type == "Robbery"))
+    , nrow(city.data %>% filter(parent_incident_type == "Theft"))
+    , nrow(city.data %>% filter(parent_incident_type == "Theft From Vehicle"))
+    , nrow(city.data %>% filter(parent_incident_type == "Theft"))
+    , nrow(city.data %>% filter(parent_incident_type == "Traffic"))
+  )
+  data <- data.frame(x, y)
+  
+  p <- plot_ly(data, x = ~x, y = ~y, type = 'bar', color = I("black")) %>%
+    layout(title = "Crimes by City",
+           xaxis = list(title = "Types of Crime"),
+           yaxis = list(title = "Counts of Reported Incidents"))
   
 })

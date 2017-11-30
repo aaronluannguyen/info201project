@@ -7,9 +7,12 @@ city <- sort(unique(police.activity.data$city))
 
 police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', stringsAsFactors = FALSE)
 
+abc <- table(police.activity.data$city)
+subset(abc, abc > 100)
 
-city.data<- police.activity.data%>%filter(city == "KIRKLAND")
-x <- sort(unique(parent.crime.type$parent_incident_type))
+city.data<- police.activity.data%>%filter(city == "RAVENSDALE")
+parent.crime.type <- unique(police.activity.data$parent_incident_type)
+x <- sort(unique(police.activity.data$parent_incident_type))
 
 y <- c(
  nrow(city.data %>% filter(parent_incident_type == "Arson"))
