@@ -5,5 +5,5 @@ library(shiny)
 
 # User interface here
 shinyUI(fluidPage(
-
+  # Add tabs here
 ))
