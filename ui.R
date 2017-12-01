@@ -7,6 +7,8 @@ library(shiny)
 shinyUI(fluidPage(
   navbarPage(title = p(strong(em("King County Police Activity"))),
              
+             # Tabs here
+             # Each person work with their assigned tab
              tabPanel("Home",
                       h1("Title Here")
                       
