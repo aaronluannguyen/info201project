@@ -16,7 +16,12 @@ shinyUI(fluidPage(
                       ),
              
              tabPanel("Aaron",
-                      h1("Visualize Police Activity")
+                      h1("Visualize Police Activity"),
+                      br(),
+                      sliderInput("aaron_slider",h3("Select Range of Years"), width = "100%", 
+                                  min = 2000, max = 2017,
+                                  value = c(2000, 2017))
+                      
                         
                       ),
              
