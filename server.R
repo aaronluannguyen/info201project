@@ -17,6 +17,8 @@ library(plotly)
 # Remember to set working directory in console to this project
 data <- read.csv("data/King_County_Police_Data.csv")
 
+crime.types <- distinct(data, parent_incident_type)
+
 # Server side 
 shinyServer(function(input, output) {
   
