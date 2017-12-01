@@ -16,8 +16,8 @@ shinyUI(fluidPage(
                       ),
              
              tabPanel("Aaron",
-                      h1("Title Here")
-                      
+                      h1("Visualize Police Activity")
+                        
                       ),
              
              tabPanel("Chianson",
