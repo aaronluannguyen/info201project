@@ -15,7 +15,7 @@ library(plotly)
 
 # Load king county police data 
 # Remember to set working directory in console to this project
-data <- read.csv("data/king_county_data.csv")
+data <- read.csv("data/King_County_Police_Data.csv")
 
 # Server side 
 shinyServer(function(input, output) {
