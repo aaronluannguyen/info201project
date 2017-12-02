@@ -67,8 +67,8 @@ shinyServer(function(input, output) {
   
   ### OMID #################################################################
   
-  output$scatter <- renderPlotly({
-    user.city <- input$cityname
+  output$omidscatter <- renderPlotly({
+    user.city <- input$omidcityname
     
     
     city.data<- police.activity.data%>%filter(city == user.city)
