@@ -4,7 +4,7 @@ library(tidyr)
 library(stringr)
 
 CleanseData <- function(police.data.path){
-  # Read in king county police call data and only keeping city and hour_of_day column
+  # Read in king county police call data
   police.data <- read.csv(police.data.path, stringsAsFactors = FALSE)
 
   # Cleaning data by removing empty strings, "N/A", rows with numbers in the cities column instead of city names
@@ -58,6 +58,7 @@ CleanseData <- function(police.data.path){
     }
     return(vec)
   }
+  # Fix misspelled names without including list element titles in the vector
   police.data$city <- unlist(sapply(police.data$city, CleanNames), use.names = FALSE)
   
   # Remove rows with empty strings or "N/A"
