@@ -20,10 +20,56 @@ police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', string
 # Server side 
 shinyServer(function(input, output) {
   
+  ### HOME #################################################################
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ### AARON ################################################################
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ### CHIANSON #############################################################
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ### KEIVON ###############################################################
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ### OMID #################################################################
   
   output$scatter <- renderPlotly({
     user.city <- input$cityname
-   
+    
     
     city.data<- police.activity.data%>%filter(city == user.city)
     
@@ -49,10 +95,13 @@ shinyServer(function(input, output) {
     
     return(plot_ly(
       x = ~x, y = ~y, type = 'bar', color = I("black")) %>%
-    layout(title = "Crimes by City",
-           margin = list(b = 75),
-           xaxis = list(title = isolate("Types of Crime"), tickangle = 0, tickfont = list(size = 10)),
-           yaxis = list(title = "Counts of Reported Incidents"))
+        layout(title = "Crimes by City",
+               margin = list(b = 75),
+               xaxis = list(title = isolate("Types of Crime"), tickangle = 0, tickfont = list(size = 10)),
+               yaxis = list(title = "Counts of Reported Incidents"))
+      
+  )})
   
-)})
+  ### ABOUT ################################################################
+  
 })
