@@ -5,7 +5,7 @@ library(stringr)
 
 CleanseData <- function(police.data.path){
   # Read in king county police call data and only keeping city and hour_of_day column
-  police.data <- select(read.csv("data/king_county_data.csv", stringsAsFactors = FALSE), city, hour_of_day)
+  police.data <- read.csv(police.data.path, stringsAsFactors = FALSE)
 
   # Cleaning data by removing empty strings, "N/A", rows with numbers in the cities column instead of city names
   # and updating misspelled cities such as "Seattel" with the correct spelling, "Seattle"
@@ -66,23 +66,23 @@ CleanseData <- function(police.data.path){
   return(police.data)
 }
   
-police.call.data <- CleanseData("data/king_county_data.csv")
+police.call.data <- CleanseData("data/King_County_Police_Data.csv")
 
-# Get and sort alphabetically unique city names
-cities <- sort(c(unique(police.call.data$city), "All"))
-
-GetTimeFilterCity <- function(city.crime){
-  result <- filter(police.call.data, city == city.crime) %>% 
-            table()
-  return(as.data.frame.matrix(result))
-}
-
-test <- GetTimeFilterCity("SEATTLE")
-
-GetTimeFilterTime <- function(time.crime){
-  result <- filter(police.call.data, hour_of_day == time.crime) %>% 
-            table()
-  return(as.data.frame.matrix(result))
-}
-
-test2 <- GetTimeFilterTime(0)
+# # Get and sort alphabetically unique city names
+# cities <- sort(c(unique(police.call.data$city), "All"))
+# 
+# GetTimeFilterCity <- function(city.crime){
+#   result <- filter(police.call.data, city == city.crime) %>% 
+#             table()
+#   return(as.data.frame.matrix(result))
+# }
+# 
+# test <- GetTimeFilterCity("SEATTLE")
+# 
+# GetTimeFilterTime <- function(time.crime){
+#   result <- filter(police.call.data, hour_of_day == time.crime) %>% 
+#             table()
+#   return(as.data.frame.matrix(result))
+# }
+# 
+# test2 <- GetTimeFilterTime(0)
