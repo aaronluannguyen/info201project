@@ -11,9 +11,6 @@ CleanseData <- function(police.data.path){
   # Read in king county police call data
   police.data <- read.csv(police.data.path, stringsAsFactors = FALSE)
 
-  # Read in king county police call data and only keeping city and hour_of_day column
-  police.data <- read.csv(police.data.path, stringsAsFactors = FALSE)
-
   # Cleaning data by removing empty strings, "N/A", rows with numbers in the cities column instead of city names
   # and updating misspelled cities such as "Seattel" with the correct spelling, "Seattle"
   police.data <- police.data[which(grepl("^[0-9]+$", police.data$city) == FALSE), ]
