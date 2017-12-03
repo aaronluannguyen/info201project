@@ -5,8 +5,11 @@ library(shiny)
 
 # User interface here
 shinyUI(fluidPage(
+  
+  # Browser tab name display
+  title = "KC Sheriff Activity",
 
-  navbarPage(title = p(strong(em("King County Sheriff"))),
+  navbarPage(title = p(strong(em("King County Sheriff Activity"))),
              
              # Tabs here
              # Each person work with their assigned tab
