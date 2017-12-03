@@ -17,6 +17,12 @@ shinyUI(fluidPage(
              
              tabPanel("Sheriff Activity",
                       
+                      div(class = "outer", 
+                          tags$head(
+                            includeCSS("aaron_styles.css")
+                          ),
+                          
+                      
                       leafletOutput("aaron_map", height = 1500),
                       
 
@@ -41,7 +47,7 @@ shinyUI(fluidPage(
                       
                       
                       
-                      
+                      )
                       ####### END OF MY TAB ########
                       ),
              
