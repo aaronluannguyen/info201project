@@ -30,7 +30,7 @@ Map <- function(data.df) {
                                      ), 
                      clusterOptions = markerClusterOptions()) %>%
     addLegend("topright", title = "Crime Classification Colors", pal=pal, values = data.df$parent_incident_type, opacity = 1) %>%
-    setView(lng = -120.74, lat = 45.7511, zoom = 7)
+    setView(lng = -120.74, lat = 46.8511, zoom = 8)
   return(m)
   
 }

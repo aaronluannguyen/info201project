@@ -6,7 +6,7 @@ library(shiny)
 # User interface here
 shinyUI(fluidPage(
 
-  navbarPage(title = p(strong(em("King County Police Activity"))),
+  navbarPage(title = p(strong(em("King County Sheriff"))),
              
              # Tabs here
              # Each person work with their assigned tab
@@ -29,12 +29,12 @@ shinyUI(fluidPage(
                                         draggable = TRUE, top = 250, left = 50, right = "auto", bottom = "auto",
                                         width = 275, height = "auto", opacity = 0.6,
                                       
-                                        h3("King County Sheriff Activity"),
+                                        h1("King County Sheriff Activity"), 
   
-                                        selectInput("aaron_select_crime", h5("Type of Crime"),
+                                        selectInput("aaron_select_crime", h3("Type of Crime"),
                                                     choices = c("All", data$parent_incident_type), width = "100%"),
                                     
-                                        selectInput("aaron_select_city", h5("City"), choices = c("All", data$city), width = "100%"),
+                                        selectInput("aaron_select_city", h3("City"), choices = c("All", data$city), width = "100%"),
                                     
                                         sliderInput("range", h3("Select Range of Years"), min = 2000, max = 2017, 
                                                    sep = "", value = c(2000, 2017)
