@@ -27,8 +27,10 @@ shinyUI(fluidPage(
                                     h3("King County Sheriff Activity"),
 
                                     selectInput("aaron_select_crime", h5("Type of Crime"),
-                                                choices = data$parent_incident_type, width = "100%"),
-                                    selectInput("aaron_select_city", h5("City"), choices = data$city, width = "100%"),
+                                                choices = c("All", data$parent_incident_type), width = "100%"),
+                                    
+                                    selectInput("aaron_select_city", h5("City"), choices = c("All", data$city), width = "100%"),
+                                    
                                     sliderInput("range", h3("Select Range of Years"), min = 2000, max = 2017, 
                                                 sep = "", value = c(2000, 2017)
                                                 )
