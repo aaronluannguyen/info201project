@@ -14,10 +14,10 @@ source("scripts/time_filter/time_filter_script.R")
 Map <- function(data.df) {
   
   pal <- colorFactor(
-    topo.colors(nrow(distinct(data.df, parent_incident_type))), data.df$parent_incident_type
+    heat.colors(nrow(distinct(data.df, parent_incident_type))), data.df$parent_incident_type
   )
   m <- leaflet() %>%
-    addProviderTiles(providers$CartoDB.Positron) %>%
+    addProviderTiles(providers$Hydda.Full) %>%
     addCircleMarkers(data = data.df, 
                      lng = ~data.df$longitude, lat = ~data.df$latitude,
                      color = ~pal(data.df$parent_incident_type), fillOpacity = 1,
