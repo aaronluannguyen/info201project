@@ -8,6 +8,7 @@
 
 # Source each person's file
 source("scripts/dashboard-aaron.R")
+source("scripts/time_filter/time_filter_script.R")
 
 
 # Load necessary libraries 
@@ -20,19 +21,8 @@ library(leaflet)
 # Load king county police data 
 # Remember to set working directory in console to this project
 
-all.cities <- c("Auburn", "Barring", "Beaux Arts", "Bellevue", "Black Diamond", "Bothell", "Burien", "Carnation", "Chelan", "Covington", 
-            "Des Moines", "Duvall", "Enumclaw", "Everett", "Fairwood", "Fall City", "Federal Way", "Gold Bar", "Grotto", "Hobart", 
-            "Issaquah", "Kenmore", "Kent", "Kirkland", "Lake Forest Park", "LynnWood", "Maple Valley", "Monroe", "Newcastle", "North Bend", 
-            "Preston", "Puyallup", "Ravensdale", "Redmond", "Renton", "Seatac", "Seattle", "Shoreline", "Skykomish", "Skyway", "Snoqualmie", 
-            "Sumner", "Tacoma", "Tigard", "Tukwila", "Vashon", "White Center", "Woodinville")
-
 # Read in data and clean it for any typos for city column
-data <- read.csv("data/King_County_Police_Data.csv") %>%
-  filter(grepl("Auburn|Barring|Beaux Arts|Bellevue|Black Diamond|Bothell|Burien|Carnation|Chelan|Covington| 
-                 Des Moines|Duvall|Enumclaw|Everett|Fairwood|Fall City|Federal Way|Gold Bar|Grotto|Hobart| 
-                 Issaquah|Kenmore|Kent|Kirkland|Lake Forest Park|LynnWood|Maple Valley|Monroe|Newcastle|North Bend| 
-                 Preston|Puyallup|Ravensdale|Redmond|Renton|Sammamish|Seatac|Seattle|Shoreline|Skykomish|Skyway|Snoqualmie| 
-                 Sumner|Tacoma|Tigard|Tukwila|Vashon|White Center|Woodinville", city, ignore.case = TRUE)) 
+data <- CleanseData("data/King_County_Police_Data.csv")
 data <- arrange(data, city)
 
 crime.types <- distinct(data, parent_incident_type)
@@ -58,7 +48,9 @@ shinyServer(function(input, output) {
   
   
   # Source functions from dashboard for visualizations
-
+  output$aaron_map <- renderLeaflet({
+    m
+  })
         
 
 
