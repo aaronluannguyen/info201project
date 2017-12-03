@@ -3,7 +3,9 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 
-# Function to clean city column in the King County police call data
+# Function to clean city column in the King County police call data.
+# @param police.data.path is the file path to the king county police data.
+# @return a dataframe of the king county police data with fixed city names
 CleanseData <- function(police.data.path){
 
   # Read in king county police call data
@@ -72,24 +74,35 @@ CleanseData <- function(police.data.path){
   return(police.data)
 }
 
-police.call.data <- CleanseData("data/King_County_Police_Data.csv")
-
+police.call.data <- select(CleanseData("D:/Info201/info201project/data/King_County_Police_Data.csv"),
+                           city, hour_of_day)
 # Get and sort alphabetically unique city names
-cities <- sort(c(unique(police.call.data$city), "All"))
+# cities <- sort(unique(police.call.data$city))
 
-# GetTimeFilterCity <- function(city.crime){
-#   result <- filter(police.call.data, city == city.crime) %>%
-#             table()
-#   return(as.data.frame.matrix(result))
-# }
-#
-# test <- GetTimeFilterCity("SEATTLE")
-#
-# GetTimeFilterTime <- function(time.crime){
-#   result <- filter(police.call.data, hour_of_day == time.crime) %>%
-#             table()
-#   return(as.data.frame.matrix(result))
-# }
-#
+GetTimeFilterCity <- function(city.crime){
+    # standardize case of city name passed in
+    city.crime <- str_to_title(city.crime)
+    result <- "" # empty result variable to be changed based on city.crime
+
+    if (city.crime == "All") { # user wants data on all cities
+        result <- group_by(police.call.data, city, hour_of_day) %>%
+                  summarise(Freq = n()) %>%
+                  group_by(city) %>%
+                  filter(Freq == max(Freq))
+    } else {# user wants data on a specific city
+        result <- filter(police.call.data, city == city.crime) %>%
+                  table()
+    }
+    return(as.data.frame(result))
+}
+
+# test <- GetTimeFilterCity("All")
+
+GetTimeFilterTime <- function(time.crime){
+    time.crime <- str_to_title(time.crime)
+    result <- filter(police.call.data, hour_of_day == time.crime) %>%
+                table()
+    return(as.data.frame(result))
+}
 
 # test2 <- GetTimeFilterTime(0)
