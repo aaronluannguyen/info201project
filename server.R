@@ -53,11 +53,10 @@ shinyServer(function(input, output) {
     
     user.choose.crime <- input$aaron_select_crime
     user.choose.city <- input$aaron_select_city
-    year.min <- as.Date(input$range[1], format = "%Y")
-    year.max <- as.Date(input$range[2], format = "%Y")
+    year.min <- paste0(input$range[1], "-01-01 00:00")
+    year.max <- paste0(input$range[2], "-12-31 23:59")
     
-    aaron.data <- data %>%
-      mutate("incident_datetime_sep" = strsplit(incident_datetime, " "))
+    aaron.data <- data 
     
     # Filter by crime type chosen
     if (user.choose.crime != "All") {
@@ -73,21 +72,15 @@ shinyServer(function(input, output) {
     
     # Filter by range of years chosen
     aaron.data <- aaron.data %>%
-      filter(as.Date(aaron.data$incident_datetime_sep[1], format = "%m/%d/%Y") >= year.min) %>%
-      filter(as.Date(aaron.data$incident_datetime_sep[1], format = "%m/%d/%Y") <= year.max)
+      filter(as.POSIXct(incident_datetime, format = "%m/%d/%Y %H:%M") >= as.POSIXct(year.min)) %>%
+      filter(as.POSIXct(incident_datetime, format = "%m/%d/%Y %H:%M") <= as.POSIXct(year.max))
     
     print(nrow(aaron.data))
+
     # Map Visualization
     Map(aaron.data)
   })
         
-
-
-  
-
-
-  
-  
   
   
   
