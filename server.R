@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
   
   # Source functions from dashboard for visualizations
   output$aaron_map <- renderLeaflet({
-    m
+    map(data)
   })
         
 
