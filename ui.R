@@ -22,7 +22,7 @@ shinyUI(fluidPage(
 
                       absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                                     draggable = TRUE, top = 250, left = 50, right = "auto", bottom = "auto",
-                                    width = 275, height = "auto",
+                                    width = 275, height = "auto", opacity = 0.6,
                                       
                                     h3("King County Sheriff Activity"),
 

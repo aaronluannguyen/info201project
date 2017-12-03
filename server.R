@@ -75,7 +75,6 @@ shinyServer(function(input, output) {
       filter(as.POSIXct(incident_datetime, format = "%m/%d/%Y %H:%M") >= as.POSIXct(year.min)) %>%
       filter(as.POSIXct(incident_datetime, format = "%m/%d/%Y %H:%M") <= as.POSIXct(year.max))
     
-    print(nrow(aaron.data))
 
     # Map Visualization
     Map(aaron.data)
