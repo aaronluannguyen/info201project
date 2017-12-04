@@ -7,20 +7,27 @@
 #    http://shiny.rstudio.com/
 #
 source("time_filter_script.R")
+library(plotly)
+library(DT)
 library(shiny)
 library(dplyr)
-library(plotly)
 
 # Define server logic required to draw a graph
 shinyServer(function(input, output) {
+    output$city.table <- DT::renderDataTable({
+        result.data <- group_by(police.call.data, city, hour_of_day) %>%
+                       summarise(Freq = n()) %>%
+                       group_by(city) %>%
+                       filter(Freq == max(Freq))
+        names(result.data) <- c("City", "Hour of Most 911 Calls (24hr clock)", "Number of Calls")
+        dt <- DT::datatable(result.data)
+    })
 
-    output$city.calls <- renderPlotly({
-    choice <- input$city.choice
-    if (choice == "All") {
+    output$city.graph <- renderPlotly({
+            GetTimeFilterCity(input$city.choice)
+        })
 
-    } else {
-        result <- GetTimeFilterCity(choice)
-    }
-
+    output$time.graph <- renderPlotly({
+        time.choice <- input$time.choice
     })
 })

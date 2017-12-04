@@ -1,6 +1,5 @@
 library(dplyr)
-# library(plotly)
-library(tidyr)
+library(plotly)
 library(stringr)
 
 # Function to clean city column in the King County police call data.
@@ -54,6 +53,7 @@ CleanseData <- function(police.data.path){
                         "Lynnwod" = "Lynnwood",
                         "Vashon" = "Vashon Island"
                         )
+
   # Function to fix misspelled names
   CleanNames <- function(vec){
     check.name <- match(vec, names(correct.city.names))
@@ -62,6 +62,7 @@ CleanseData <- function(police.data.path){
     }
     return(vec)
   }
+
   # Fix misspelled names without including list element titles in the vector
   police.data$city <- unlist(sapply(police.data$city, CleanNames), use.names = FALSE)
 
@@ -76,30 +77,26 @@ police.call.data <- select(CleanseData("D:/Info201/info201project/data/King_Coun
 # Get and sort alphabetically unique city names
 # cities <- sort(unique(police.call.data$city))
 
+# Creates and returns an interactive bargraph based on the city passed in.
+# @param city.crime is the case-insensitive name of the city the graph is being drawn for
+# @return is plotly bar graph object
 GetTimeFilterCity <- function(city.crime){
-    # standardize case of city name passed in
-    city.crime <- str_to_title(city.crime)
-    result <- "" # empty result variable to be changed based on city.crime
-
-    if (city.crime == "All") { # user wants data on all cities
-        result <- group_by(police.call.data, city, hour_of_day) %>%
-                  summarise(Freq = n()) %>%
-                  group_by(city) %>%
-                  filter(Freq == max(Freq))
-    } else {# user wants data on a specific city
-        result <- filter(police.call.data, city == city.crime) %>%
-                  table()
-    }
-    return(as.data.frame(result))
+    city.crime <- str_to_title(city.crime) # standardize case of city name passed in
+    result.data <- filter(police.call.data, city == city.crime) %>%
+              table()
+    result.data <- as.data.frame(result.data)
+    # Create bar graph of results
+    result.graph <- plot_ly(
+        x = result.data$hour_of_day,
+        y = result.data$Freq,
+        type = "bar"
+    ) %>%
+        layout(
+            yaxis = list(title = "Number of Calls"),
+            xaxis = list(title = str_to_title(paste("Time of Calls in", city.crime, "(24hr clock)", sep = " ")),
+                         tickangle = 0),
+            title = str_to_title(paste("Police Call Frequency in", city.crime, "(2017)", sep = " ")),
+            text = paste("Calls", result.data$Freq, sep = " ")
+    )
+    return(result.graph)
 }
-
-# test <- GetTimeFilterCity("All")
-
-GetTimeFilterTime <- function(time.crime){
-    time.crime <- str_to_title(time.crime)
-    result <- filter(police.call.data, hour_of_day == time.crime) %>%
-                table()
-    return(as.data.frame(result))
-}
-
-# test2 <- GetTimeFilterTime(0)
