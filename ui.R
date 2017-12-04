@@ -39,7 +39,7 @@ shinyUI(fluidPage(
                                     
                                         selectInput("aaron_select_city", h3("City"), choices = c("All", data$city), width = "100%"),
                                     
-                                        sliderInput("range", h3("Select Range of Years"), min = 2000, max = 2017, 
+                                        sliderInput("range", h3("Range of Years"), min = 2000, max = 2017, 
                                                    sep = "", value = c(2000, 2017)
                                                    )
                          )
