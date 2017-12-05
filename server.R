@@ -15,14 +15,28 @@ library(plotly)
 
 # Load king county police data 
 # Remember to set working directory in console to this project
-police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', stringsAsFactors = FALSE)
+all.cities <- c("Auburn", "Barring", "Beaux Arts", "Bellevue", "Black Diamond", "Bothell", "Burien", "Carnation", "Chelan", "Covington", 
+            "Des Moines", "Duvall", "Enumclaw", "Everett", "Fairwood", "Fall City", "Federal Way", "Gold Bar", "Grotto", "Hobart", 
+            "Issaquah", "Kenmore", "Kent", "Kirkland", "Lake Forest Park", "LynnWood", "Maple Valley", "Monroe", "Newcastle", "North Bend", 
+            "Preston", "Puyallup", "Ravensdale", "Redmond", "Renton", "Seatac", "Seattle", "Shoreline", "Skykomish", "Skyway", "Snoqualmie", 
+            "Sumner", "Tacoma", "Tigard", "Tukwila", "Vashon", "White Center", "Woodinville")
+
+# Read in data and clean it for any typos for city column
+data <- read.csv("data/King_County_Police_Data.csv") %>%
+  filter(grepl("Auburn|Barring|Beaux Arts|Bellevue|Black Diamond|Bothell|Burien|Carnation|Chelan|Covington| 
+                 Des Moines|Duvall|Enumclaw|Everett|Fairwood|Fall City|Federal Way|Gold Bar|Grotto|Hobart| 
+                 Issaquah|Kenmore|Kent|Kirkland|Lake Forest Park|LynnWood|Maple Valley|Monroe|Newcastle|North Bend| 
+                 Preston|Puyallup|Ravensdale|Redmond|Renton|Seatac|Seattle|Shoreline|Skykomish|Skyway|Snoqualmie| 
+                 Sumner|Tacoma|Tigard|Tukwila|Vashon|White Center|Woodinville", city, ignore.case = TRUE))
+
+crime.types <- distinct(data, parent_incident_type)
 
 # Server side 
 shinyServer(function(input, output) {
   
   ### HOME #################################################################
   
-  
+
   
   
   
@@ -71,9 +85,9 @@ shinyServer(function(input, output) {
     user.city <- input$omidcityname
     
     
-    city.data<- police.activity.data%>%filter(city == user.city)
+    city.data<- data%>%filter(city == user.city)
     
-    x <- gsub(" ", "\n", sort(unique(police.activity.data$parent_incident_type))) # replaces spaces with newlines
+    x <- gsub(" ", "\n", sort(unique(data$parent_incident_type))) # replaces spaces with newlines
     
     y <- c(
       nrow(city.data %>% filter(parent_incident_type == "Arson"))
