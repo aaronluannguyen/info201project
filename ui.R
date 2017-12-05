@@ -2,7 +2,7 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
-police.activity.data <- read.csv('data/King_County_Sheriff_s_Office.csv', stringsAsFactors = FALSE)
+police.activity.data <- read.csv('data/King_County_Police_Data.csv', stringsAsFactors = FALSE)
 significant.cities <- police.activity.data %>% 
   group_by(city) %>% 
   summarize(n = n()) %>% 
