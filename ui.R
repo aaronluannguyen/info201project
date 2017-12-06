@@ -53,7 +53,7 @@ shinyUI(fluidPage(
                         )
                       ),
              
-             tabPanel("Chianson",
+             tabPanel("Call Frequency",
                       h1("Police Call Data by Time"),
                      
                       # Sidebar with a slider input desired city data
