@@ -11,7 +11,7 @@ source("scripts/dashboard-aaron.R")
 source("scripts/clean_data_chianson.R")
 source("scripts/Crimes_By_City.R")
 source("scripts/time_filter_chianson.R")
-
+source("scripts/Crimes_By_City.R")
 
 # Load necessary libraries 
 library(shiny)
@@ -20,9 +20,6 @@ library(ggplot2)
 library(plotly)
 library(leaflet)
 library(DT)
-
-source("scripts/Crimes_By_City.R")
-data <- read.csv('data/King_County_Police_Data.csv', stringsAsFactors = FALSE)
 
 # Load king county police data 
 # Remember to set working directory in console to this project
