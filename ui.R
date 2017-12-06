@@ -39,7 +39,7 @@ shinyUI(fluidPage(
                       
                           leafletOutput("aaron_map", height = "100%"),
                       
-
+                          # Moveable user interaction that enables them to filter for desired map representation
                           absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                                         draggable = TRUE, top = 250, left = 50, right = "auto", bottom = "auto",
                                         width = 275, height = "auto", opacity = 0.6,
@@ -76,8 +76,8 @@ shinyUI(fluidPage(
                       )
                        ),
              
-             tabPanel("Keivon",
-                      h1("Police Activity During the Week"),
+             tabPanel("Incidents by Week Days",
+                      h1("KC Sheriff Activity During the Week"),
                       sidebarLayout(
                         sidebarPanel(
                           selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%")),
