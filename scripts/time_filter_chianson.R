@@ -1,4 +1,4 @@
-source("clean_data_script.R")
+source("scripts/clean_data_chianson.R")
 library(dplyr)
 library(plotly)
 library(stringr)
