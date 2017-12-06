@@ -10,6 +10,7 @@
 source("scripts/dashboard-aaron.R")
 source("scripts/clean_data_chianson.R")
 source("scripts/Crimes_By_City.R")
+source("scripts/time_filter_chianson.R")
 
 
 # Load necessary libraries 
@@ -18,6 +19,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 library(leaflet)
+library(DT)
 
 source("scripts/Crimes_By_City.R")
 data <- read.csv('data/King_County_Police_Data.csv', stringsAsFactors = FALSE)
@@ -75,7 +77,22 @@ shinyServer(function(input, output) {
   })
         
   ### CHIANSON #############################################################
-
+  output$city.table <- DT::renderDataTable({
+    result.data <- group_by(police.call.data, city, hour_of_day) %>%
+      summarise(Freq = n()) %>%
+      group_by(city) %>%
+      filter(Freq == max(Freq))
+    names(result.data) <- c("City", "Hour of Most 911 Calls (24hr clock)", "Number of Calls")
+    dt <- DT::datatable(result.data)
+  })
+  
+  output$city.graph <- renderPlotly({
+    GetTimeFilterCity(input$city.choice)
+  })
+  
+  output$time.graph <- renderPlotly({
+    time.choice <- input$time.choice
+  })
   ### KEIVON ###############################################################
 
   ### OMID #################################################################
