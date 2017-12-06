@@ -3,7 +3,7 @@ library(dplyr)
 library(plotly)
 library(stringr)
 
-police.call.data <- select(CleanseData("../../data/King_County_Police_Data.csv"),
+police.call.data <- select(CleanseData("data/King_County_Police_Data.csv"),
                            city, hour_of_day)
 
 # Creates and returns an interactive bargraph based on the city passed in.

@@ -9,6 +9,14 @@ significant.cities <- police.activity.data %>%
   filter(n > 10) # filter to exclude typos in data
 dropdown.options <- significant.cities$city
 
+# Get the unique city names of King County
+cities.vector <- sort(unique(police.call.data$city))
+
+# Turn cities vector into a list so it can be used for the selectInput drop down choices
+cities.list <- as.list(cities.vector)
+names(cities.list) <- cities.vector # Set list elements names to city names
+
+# Shiny app
 shinyUI(fluidPage(
   
   # Browser tab name display
@@ -52,8 +60,21 @@ shinyUI(fluidPage(
                       ),
              
              tabPanel("Chianson",
-                      h1("Title Here")
-                       
+                      h1("Police Call Data by Time"),
+                     
+                      # Sidebar with a slider input desired city data
+                      sidebarLayout(
+                        sidebarPanel(
+                          selectInput('city.choice', "What city do you want to see?",
+                                      choices = cities.list)
+                        ),
+                        
+                        # Show a plot and data table of police calls
+                        mainPanel(
+                          plotlyOutput("city.graph"),
+                          DT::dataTableOutput("city.table")
+                        )
+                      )
                        ),
              
              tabPanel("Keivon",
