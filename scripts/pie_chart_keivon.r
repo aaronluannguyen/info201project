@@ -24,4 +24,4 @@ pie <- function(user.data, crime_type){
     geom_text(aes(y = count + c(0, cumsum(count)[-length(count)]), label = percent(count/total)), size=3)
   return(pie)      
 }
-pie(data, "Arson")
+
