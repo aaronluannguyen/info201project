@@ -26,7 +26,7 @@ GetTimeFilterCity <- function(city.crime){
             yaxis = list(title = "Number of Calls"),
             xaxis = list(title = str_to_title(paste("Time of Calls in", city.crime, "(24hr clock)", sep = " ")),
                          tickangle = 0),
-            title = str_to_title(paste("Police Call Frequency in", city.crime, "(2017)", sep = " "))
+            title = str_to_title(paste("Police Call Frequency in", city.crime, "(2000 - 2017)", sep = " "))
     )
     return(result.graph)
 }
