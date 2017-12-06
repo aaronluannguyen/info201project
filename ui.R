@@ -2,12 +2,6 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
-police.activity.data <- read.csv('data/King_County_Police_Data.csv', stringsAsFactors = FALSE)
-significant.cities <- police.activity.data %>% 
-  group_by(city) %>% 
-  summarize(n = n()) %>% 
-  filter(n > 10) # filter to exclude typos in data
-dropdown.options <- significant.cities$city
 
 # Get the unique city names of King County
 cities.vector <- sort(unique(police.call.data$city))
@@ -82,13 +76,14 @@ shinyUI(fluidPage(
                       
                       ),
              
-             tabPanel("Omid",
+             tabPanel("Incidents by City",
                       h1("Crime By City Reported to King County"),
+                      
                       # Radio buttons
                       sidebarLayout(
                         sidebarPanel(
                           
-                          selectInput('omidcityname', 'City', choices = dropdown.options)
+                          selectInput('omidcityname', 'City', choices = cities.list)
                         ),
                         mainPanel(
                           plotlyOutput("omidscatter"),
