@@ -1,4 +1,4 @@
-# Server side file
+ # Server side file
 
 
 # rsconnect code to run in console below
@@ -18,6 +18,9 @@ library(ggplot2)
 library(plotly)
 library(leaflet)
 
+source("scripts/Crimes_By_City.R")
+data <- read.csv('data/King_County_Police_Data.csv', stringsAsFactors = FALSE)
+
 # Load king county police data 
 # Remember to set working directory in console to this project
 
@@ -28,21 +31,11 @@ data <- data %>%
   filter(longitude <= -116 & longitude >= -125) %>%
   filter(latitude <= 50 & latitude >= 44) 
 
-
 # Server side 
 shinyServer(function(input, output) {
   
   ### HOME #################################################################
-  
 
-  
-  
-  
-  
-  
-  
-  
-  
   ### AARON ################################################################
   
   # Source functions from dashboard file for visualizations
@@ -81,37 +74,14 @@ shinyServer(function(input, output) {
   })
         
   ### CHIANSON #############################################################
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   ### KEIVON ###############################################################
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   ### OMID #################################################################
   
-  
-  
-  
-  
-  
-  
-  
-  
+  output$omidscatter <- renderPlotly({
+      Crimes_By_City(data, input$omidcityname)
+  })
   
   ### ABOUT ################################################################
   
@@ -126,4 +96,7 @@ shinyServer(function(input, output) {
   
   
 })
+
+
+
 
