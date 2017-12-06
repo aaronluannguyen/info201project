@@ -12,6 +12,7 @@ source("scripts/clean_data_chianson.R")
 source("scripts/Crimes_By_City.R")
 source("scripts/time_filter_chianson.R")
 source("scripts/Crimes_By_City.R")
+source("script/pie_chart_Keivon")
 
 # Load necessary libraries 
 library(shiny)
@@ -92,6 +93,11 @@ shinyServer(function(input, output) {
   })
   ### KEIVON ###############################################################
 
+  output$keivon_pie <- renderPlot({
+    keivon.data <- data
+    pie_chart_keivon(keivon.data, input$days_of_week)
+  })
+  
   ### OMID #################################################################
   
   output$omidscatter <- renderPlotly({

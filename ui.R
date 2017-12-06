@@ -3,7 +3,6 @@
 library(dplyr)
 library(plotly)
 library(shiny)
-library(shinythemes)
 
 
 # Get the unique city names of King County
@@ -20,8 +19,6 @@ shinyUI(fluidPage(
   title = "KC Sheriff Activity",
 
   navbarPage(title = p(strong(em("King County Sheriff Activity"))),
-             theme = shinytheme("sandstone"),
-             
              
              # Tabs here
              # Each person work with their assigned tab
@@ -30,7 +27,7 @@ shinyUI(fluidPage(
                       
                       ),
              
-             tabPanel("Crime Map",
+             tabPanel("Map",
                       
                         div(class = "outer", 
                             tags$head(
@@ -76,10 +73,7 @@ shinyUI(fluidPage(
                       )
                        ),
              
-             tabPanel("Keivon",
-                      h1("Title Here")
-                      
-                      ),
+             
              
              tabPanel("Incidents by City",
                       h1("Crime By City Reported to King County"),
@@ -103,7 +97,17 @@ shinyUI(fluidPage(
              tabPanel("About",
                       h1("Why Did We Choose King County Police Data?")
                       
-                      )
+                      ),
              
+             tabPanel("Keivon",
+                      h1("Police Activity During the Week"),
+                      sidebarLayout(
+                        sidebarPanel(
+                          selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%"))
+                        ),
+                        mainPanel(
+                          plotOutput("keivon_pie")
+                      
+             )
              )
 ))
