@@ -7,7 +7,7 @@ library(plotly)
 library(leaflet)
 library(RColorBrewer)
 library(maps)
-source("scripts/time_filter/time_filter_script.R")
+
 
 
 # function for producing a map plot of all crimes that occurred in data
