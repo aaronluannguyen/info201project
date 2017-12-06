@@ -104,10 +104,11 @@ shinyUI(fluidPage(
                       sidebarLayout(
                         sidebarPanel(
                           selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%"))
-                        ),
-                        mainPanel(
-                          plotOutput("keivon_pie")
-                      
+                      ),
+                      mainPanel(
+                        plotOutput("keivon_pie")
+                        
+                      )
              )
              )
 ))
