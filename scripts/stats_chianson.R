@@ -16,6 +16,7 @@ GetFreqTable <- function(column.name){
   result <- select(police.data, eval(parse(text = "column.name"))) %>% 
             group_by_(eval(parse(text = "column.name"))) %>% 
             summarise(Freq = n())
+  return(result)
 }
 
 # Stats on property crime calls (most frequently called about)
