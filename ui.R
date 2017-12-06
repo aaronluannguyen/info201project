@@ -3,6 +3,8 @@
 library(dplyr)
 library(plotly)
 library(shiny)
+library(leaflet)
+library(shinythemes)
 
 
 # Get the unique city names of King County
@@ -19,6 +21,7 @@ shinyUI(fluidPage(
   title = "KC Sheriff Activity",
 
   navbarPage(title = p(strong(em("King County Sheriff Activity"))),
+             theme = shinytheme("sandstone"),
              
              # Tabs here
              # Each person work with their assigned tab
@@ -27,7 +30,7 @@ shinyUI(fluidPage(
                       
                       ),
              
-             tabPanel("Map",
+             tabPanel("Crime Map",
                       
                         div(class = "outer", 
                             tags$head(
@@ -51,8 +54,8 @@ shinyUI(fluidPage(
                                         sliderInput("range", h3("Range of Years"), min = 2000, max = 2017, 
                                                    sep = "", value = c(2000, 2017)
                                                    )
-                         )
-                        )
+                                        )
+                          )
                       ),
              
              tabPanel("Call Frequency",
@@ -73,7 +76,17 @@ shinyUI(fluidPage(
                       )
                        ),
              
-             
+             tabPanel("Keivon",
+                      h1("Police Activity During the Week"),
+                      sidebarLayout(
+                        sidebarPanel(
+                          selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%")),
+                      
+                      mainPanel(
+                        plotOutput("keivon_pie")
+                                )
+                        )
+                      ),
              
              tabPanel("Incidents by City",
                       h1("Crime By City Reported to King County"),
@@ -85,29 +98,22 @@ shinyUI(fluidPage(
                           selectInput('omidcityname', 'City', choices = cities.list)
                         ),
                         mainPanel(
-                          plotlyOutput("omidscatter"),
-                          br(),
-                          p("This is an interactive graph that displays crime information for user-selected cities in reported King County.", align = "center"),
-                          br(),
-                          p("Working with this data helped us gain valuable insights into the spatial differences in the types of crimes perpetuated. For instance- Seattle had a more balanced crime profile to Burien which had far more proprty crimes than any other crime. In the data available- it's also interesting to see that Property Crimes are higher than other crimes from almost all cities selected. We decided to further explore this- and discovered this could be attributed to the county's growing poverty population.  ", align = "center")
+                                  plotlyOutput("omidscatter"),
+                                  br(),
+                                  p("This is an interactive graph that displays crime information for user-selected cities in reported King County.", align = "center"),
+                                  br(),
+                                  p("Working with this data helped us gain valuable insights into the spatial differences in the types of crimes perpetuated. For instance- 
+                                    Seattle had a more balanced crime profile to Burien which had far more proprty crimes than any other crime. In the data available- it's also 
+                                    interesting to see that Property Crimes are higher than other crimes from almost all cities selected. We decided to further explore this- and 
+                                    discovered this could be attributed to the county's growing poverty population.  ", align = "center")
+                                  )
                         )
-                      )
                       ),
              
              tabPanel("About",
                       h1("Why Did We Choose King County Police Data?")
                       
-                      ),
+                      )
              
-             tabPanel("Keivon",
-                      h1("Police Activity During the Week"),
-                      sidebarLayout(
-                        sidebarPanel(
-                          selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%"))
-                        ),
-                        mainPanel(
-                          plotOutput("keivon_pie")
-                      
-             )
-             )
+  )
 ))

@@ -2,7 +2,6 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
-install.packages(scales)
 library(scales)
 
 pie <- function(user.data, crime_type){
