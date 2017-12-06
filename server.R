@@ -9,7 +9,9 @@
 # Source each person's file
 source("scripts/dashboard-aaron.R")
 source("scripts/clean_data_chianson.R")
+source("scripts/Crimes_By_City.R")
 source("scripts/time_filter_chianson.R")
+
 
 # Load necessary libraries 
 library(shiny)
