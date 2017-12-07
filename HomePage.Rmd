@@ -2,13 +2,22 @@
 title: "HomePage"
 output: html_document
 ---
+# **King County Sheriff Activity**
 
-# What is this project about?
-![logo](King.County.Sheriff.Logo.jpg)
-# King County Sheriff's Office
+### What is this project about?
+This project is exploring a data set provided by **Socrata**. **Socrata** was founded in 2007 by Kevin Merritt. Their mission is to make government data discoverable and usable for people to use. The data that they provide range from the city, county, state, and federal level organizations. Our project specifically utilizes *Socrata*'s **King County Sheriff's Office**. This data set was last updated on **November 30th, 2017** and has data from the year 2000. Although, this data has information about crime reported incidents since 2000, the bulk of the data lies in the years of **2016 & 2017**. This project will dive into the data and provide **interactive visualizations** that will help our stakeholders better understand this data. Each of our visualizations will be located on its own respective page or tab and will represent the data in unique ways that aim to help answer our stakholders' questions.
 
-## Why did we choose this data set?
-Initially, as a group, we set our sights on pursuing a project that would work with meaningful data that could help people. We browsed around from _Google Trends_, _Seattle Police Department_, and other sets of data. However, the King County Sheriff's Office stood out from the rest. This data set had interesting categories that we could create vivd visualizations from. 
+### Why did we choose this data set?
+Initially, as a group, we set our sights on pursuing a project that would work with meaningful data that could benefit society. We browsed around for data sets from Google Trends, Seattle Police Department, and others, but the King County Sheriff's Office stood out from the rest. All over the news, we hear and see information about incidents of crime, but this data set provided us with a new perspective of seeing **all** the incidents that the **King County Sheriff's Office** respond to every day. We were taken back at how many crime incidents were included in this data. However, the mass amount of data in this, really peaked our interests. The ways that this information could be utilized drove us to pursue this topic area. This data gave us unique opportunities to present this data in different ways ranging from incident locations to specific incident types and descriptions. 
 
-## Our Primary Stakeholder
-The King County Sheriff's Office is our primary stakeholder. Our focus was to help 
+### Questions Driving this Project
+- Which areas have the highest crime rates?
+- How are the sheriff's office's resources being distributed? 
+- Is there a need for extra resources to continue being effective?
+- Are there any alarming patterns or extremely dense crime areas that need more attention?
+
+### Our Primary Stakeholder
+The King County Sheriff's Office is our primary stakeholder. This project's focus was to help the **King County Sheriff's Office** in their battle for justice. Our visualizations are aimed to better inform the office of how their resources being spent. Anywhere from the time of day, specific week days, or by city, our visualizations aim to address these areas of classifications. By breaking down the crime incidents into differen categories, we hope to provide new perspectives on viewing the data. Our visualizations are focused on doing this. All of our visualizations allow the sheriff's office to **filter** and explore new ways to classify groups of data. The **interactive map** is **great** tool for the sheriff's office to see crime incidents clustered within particular areas. We also provide visuals to analyze **call frequencies** according to the hour of the day, **incidents by week day**, and **incidents by city**. 
+
+### Other Notable Stakeholders
+This project can also be interpretted by other stakeholders other than the King County Sheriff's Office. Other stakeholders that we identified were **policy makers** and **residents** in the King County area. We believe that all of our stakeholders can benefit from the information provided by this project. 

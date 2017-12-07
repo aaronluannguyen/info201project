@@ -1,2 +1,3 @@
-# info201project
-Group project for INFO 201
+Our Group Project for INFO 201
+
+King County Sheriff Activity

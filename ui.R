@@ -26,10 +26,19 @@ shinyUI(fluidPage(
              # Tabs here
              # Each person work with their assigned tab
              tabPanel("Home",
-                      includeMarkdown("HomePage.Rmd")
+                      sidebarLayout(
+                        sidebarPanel (
+                          tags$img(src = "homepage-badge-sheriff.jpg", height = "100%", width = "100%"),
+                          tags$img(src = "King.County.Sheriff.Logo.jpg", height = "100%", width = "100%")
+                        ),
+                        
+                        mainPanel(
+                          includeMarkdown("HomePage.Rmd")
+                          )
+                        )
                       ),
              
-             tabPanel("Crime Map",
+             tabPanel("Incident Map",
                       
                         div(class = "outer", 
                             tags$head(
@@ -79,7 +88,7 @@ shinyUI(fluidPage(
                       h1("KC Sheriff Activity During the Week"),
                       sidebarLayout(
                         sidebarPanel(
-                          selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%")),
+                          selectInput('kev_crime_type', 'Select Incident Type', choices = c("All"), width = "100%")),
                       
                       mainPanel(
                         plotOutput("keivon_pie")

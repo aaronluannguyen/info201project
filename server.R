@@ -36,8 +36,6 @@ data <- data %>%
 # Server side 
 shinyServer(function(input, output) {
   
-  ### HOME #################################################################
-
   ### AARON ################################################################
   
   # Source functions from dashboard file for visualizations
@@ -76,6 +74,7 @@ shinyServer(function(input, output) {
   })
         
   ### CHIANSON #############################################################
+  
   output$city.table <- DT::renderDataTable({
     result.data <- group_by(police.call.data, city, hour_of_day) %>%
       summarise(Freq = n()) %>%
@@ -89,14 +88,11 @@ shinyServer(function(input, output) {
     GetTimeFilterCity(input$city.choice)
   })
   
-  output$time.graph <- renderPlotly({
-    time.choice <- input$time.choice
-  })
   ### KEIVON ###############################################################
 
   output$keivon_pie <- renderPlot({
     keivon.data <- data
-    pie(keivon.data, input$days_of_week)
+    pie(keivon.data, input$kev_crime_type)
   })
   
   ### OMID #################################################################
