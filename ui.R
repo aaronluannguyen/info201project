@@ -7,7 +7,9 @@ library(leaflet)
 library(shinythemes)
 
 
-# Get the unique city names of King County
+# Get the unique city names & unique incident types of King County Sheriff's Office
+parent_incident_type.vector <- sort(unique(data$parent_incident_type))
+parent_incident_type.list <- as.list(parent_incident_type.vector)
 cities.vector <- sort(unique(police.call.data$city))
 
 # Turn cities vector into a list so it can be used for the selectInput drop down choices
@@ -22,9 +24,7 @@ shinyUI(fluidPage(
 
   navbarPage(title = p(strong(em("King County Sheriff Activity"))),
              theme = shinytheme("sandstone"),
-             
-             # Tabs here
-             # Each person work with their assigned tab
+
              tabPanel("Home",
                       sidebarLayout(
                         sidebarPanel (
@@ -88,10 +88,10 @@ shinyUI(fluidPage(
                       h1("KC Sheriff Activity During the Week"),
                       sidebarLayout(
                         sidebarPanel(
-                          selectInput('kev_crime_type', 'Select Incident Type', choices = c("All"), width = "100%")),
+                          selectInput('parent_incident_type', 'Crime Type', choices = parent_incident_type.list)),
                       
                       mainPanel(
-                        plotOutput("keivon_pie")
+                        plotlyOutput("keivon_pie")
                                 )
                         )
                       ),

@@ -2,33 +2,25 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
-library(scales)
-source("scripts/clean_data_chianson.R")
 
 pie <- function(user.data, crime_type){
-  total <- user.data %>%
-          filter(parent_incident_type == crime_type) %>%
-          summarise(count = n())
-
-  total <- as.matrix(total)
-  total <- as.vector(total)
-
-  new.data <- user.data %>%
-              filter(parent_incident_type == crime_type) %>%
-              group_by(day_of_week) %>%
-              summarise(count = n())
-
-  bp <- ggplot(new.data, aes(x="", y = count, fill = day_of_week)) +
-               geom_bar(width = 1, stat = "identity")
-
-  pie <- bp + coord_polar("y", start=0) +
-         geom_text(aes(y = count + c(0, cumsum(count)[-length(count)]),
-                       label = percent(count/total)), size = 3)
-  return(pie)
+  
+  new.data <- user.data %>% 
+    filter(parent_incident_type == crime_type) %>% 
+    group_by(day_of_week) %>% 
+    summarise(count = n())
+  
+  
+  p <- plot_ly(new.data, labels = ~day_of_week, values = ~count, type = 'pie',
+               textposition = 'inside',
+               textinfo = 'label+percent',
+               insidetextfont = list(color = '#FFFFFF'),
+               hoverinfo = 'text+text1',
+               text = ~paste(day_of_week, "\n", count, "incidents")
+  ) %>% 
+    layout(title ="Police Activity During the Week", showlegend = T,
+           xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+  
+  return(p)      
 }
-
-police.data <- CleanseData("data/King_County_Police_Data.csv")
-crime.types <- sort(unique(police.data$parent_incident_type))
-
-temp <- pie(police.data, "Arson")
-print(temp)

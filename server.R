@@ -2,7 +2,7 @@
 
 
 # rsconnect code to run in console below
-#rsconnect::setAccountInfo(name='aaron-nguyen',
+# rsconnect::setAccountInfo(name='aaron-nguyen',
 #                          token='F52E4104BEF9260EFB0008A71F2D69BE',
 #                          secret='EVjqAYj2wWuVoatja/OKJy4BytZGu6U974bMre0/')
 
@@ -90,9 +90,9 @@ shinyServer(function(input, output) {
   
   ### KEIVON ###############################################################
 
-  output$keivon_pie <- renderPlot({
+  output$keivon_pie <- renderPlotly({
     keivon.data <- data
-    pie(keivon.data, input$kev_crime_type)
+    pie(keivon.data, input$parent_incident_type)
   })
   
   ### OMID #################################################################
