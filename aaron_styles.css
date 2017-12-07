@@ -4,7 +4,7 @@ input[type="number"] {
 
 div.outer {
   position: fixed;
-  top: 50px;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -15,7 +15,8 @@ div.outer {
 
 #controls {
   /* Appearance */
-  background-color: white;
+  color: white;
+  background-color: dimgray;
   padding: 0 20px 20px 20px;
   cursor: move;
   border-radius: 10px;

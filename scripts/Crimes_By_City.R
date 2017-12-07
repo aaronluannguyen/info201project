@@ -28,7 +28,7 @@ Crimes_By_City <- function(data, user.city){
   )
   
   return(plot_ly(
-    x = ~x, y = ~y, type = 'bar', color = I("blue")) %>%
+    x = ~x, y = ~y, type = 'bar', marker = list(color = "#696969")) %>%
       layout(title = "Crimes by City",
              margin = list(b = 75),
              xaxis = list(title = isolate("Types of Crime"), tickangle = 0, tickfont = list(size = 10)),

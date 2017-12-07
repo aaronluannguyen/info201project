@@ -1,0 +1,53 @@
+---
+title: "_**Team Members**_"
+output: html_document
+---
+# **The Team Behind This Project**
+<hr>
+### **Aaron Nguyen**
+**Primary Role** <br>
+- Building the **_Crime Map_** tab of our Shiny app
+<br>
+
+**Other Contributions** <br>
+- Built an optimized UI and Server Framework for multi-personel collaboration
+- Built the **_Home_**
+- Built the **_Our Team_** page
+- Shiny app aesthetics
+- Managed branch merging and any conflicts
+- Project Proposal 
+
+<br>
+
+### **Chianson Siu**
+**Primary Role** <br>
+- Building the **_Call Frequency_** tab of our Shiny app
+<br>
+
+**Other Contributions** <br>
+- Built data cleansing function to clean up data set
+- Provided data wrangling functions and variables for team
+- Managed branch merging and any conflicts
+- Project Proposal
+
+<br>
+
+### **Keivon Gunn**
+**Primary Role** <br>
+- Building the **_Incidents by Week Day_** tab of our Shiny app
+<br>
+
+**Other Contributions** <br>
+- Project Proposal
+
+<br>
+
+### **Omid Vahabnejad**
+**Primary Role** <br>
+- Building the **_Incidents by City_** tab of our Shiny app
+<br>
+
+**Other Contributions** <br>
+- Project Proposal
+<br>
+<br>
