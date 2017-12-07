@@ -1,0 +1,14 @@
+---
+title: "HomePage"
+output: html_document
+---
+
+# What is this project about?
+![logo](King.County.Sheriff.Logo.jpg)
+# King County Sheriff's Office
+
+## Why did we choose this data set?
+Initially, as a group, we set our sights on pursuing a project that would work with meaningful data that could help people. We browsed around from _Google Trends_, _Seattle Police Department_, and other sets of data. However, the King County Sheriff's Office stood out from the rest. This data set had interesting categories that we could create vivd visualizations from. 
+
+## Our Primary Stakeholder
+The King County Sheriff's Office is our primary stakeholder. Our focus was to help 

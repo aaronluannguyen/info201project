@@ -26,8 +26,7 @@ shinyUI(fluidPage(
              # Tabs here
              # Each person work with their assigned tab
              tabPanel("Home",
-                      h1("Title Here")
-                      
+                      includeMarkdown("HomePage.Rmd")
                       ),
              
              tabPanel("Crime Map",
