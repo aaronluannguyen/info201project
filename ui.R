@@ -110,23 +110,8 @@ shinyUI(fluidPage(
                         )
                       ),
              
-             tabPanel("Our Team", includeMarkdown("RMarkdownFile.rmd"),
-                      h1("Team Members"),
-                      br(),
-                      
-                      h3("Aaron Nguyen"),
-                      p("Primary role was creating the strong(em(Crime Map))."),
-                      br(),
-                      
-                      h3("Chianson Siu"),
-                      
-                      br(),
-                      
-                      h3("Keivon Gunn"),
-                      
-                      br(),
-                      
-                      h3("Omid Vahabnejad")
+             tabPanel("Our Team", 
+                      includeMarkdown("RMarkdownFile.rmd"),
                       
                     )
              
