@@ -2,7 +2,7 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
-source("scripts/clean_data_chianson.R")
+
 
 pie <- function(user.data, crime_type){
 
@@ -28,6 +28,3 @@ pie <- function(user.data, crime_type){
 
   return(p)
 }
-
-police.data <- CleanseData("data/King_County_Police_Data.csv")
-temp <- pie(police.data, "Theft")
