@@ -27,6 +27,7 @@ output: html_document
 **Other Contributions** <br>
 - Built data cleansing function to clean up data set
 - Provided data wrangling functions and variables for team
+- Streamlined and error checked code for other tabs
 - Managed branch merging and any conflicts
 - Project Proposal
 
