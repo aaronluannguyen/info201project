@@ -18,8 +18,9 @@ Initially, as a group, we set our sights on pursuing a project that would work w
 
 ### Key Takeaways
 - Find and explore alarming patterns of crime incidents in particular areas or places by using the **Incident Map** and its clustering feature to gain a better understanding of where the King County Sheriffs are most active
-- Discover any correlations between call frequencies and the hour of the day, and have a better understanding of which time frames contain the highest call frequencies as well as the highest frequencies per city
-- Explore possible impacts of the specific day of the week on the type of incidents reported
+- Find statistics for each city in King County as well as neighboring cities where King County Sheriffs might have responded in
+- Discover more about how many calls occur during specific times of the day
+- Explore different statistics for different types of crimes with various correlations like city or a specific week day
 - Better understand which cities have higher incidents reported and which types of incidents are most reported in those cities
 
 ### Our Primary Stakeholder
