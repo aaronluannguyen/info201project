@@ -13,7 +13,7 @@ output: html_document
 - Built an optimized UI and Server Framework for multi-personel collaboration
 - Built the **_Home_**
 - Built the **_Our Team_** page
-- Shiny App aesthetics
+- Shiny app aesthetics
 - Managed branch merging and any conflicts
 - Project Proposal 
 
