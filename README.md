@@ -1,8 +1,7 @@
-Our Group Project for INFO 201
-<br>
-Link to our Shiny app: https://aaron-nguyen.shinyapps.io/kcsheriffactivity/
-
 # **King County Sheriff Activity**
+
+Link to our Shiny app: https://aaron-nguyen.shinyapps.io/kcsheriffactivity/
+<br>
 
 ### What is this project about?
 This project is exploring a data set provided by **Socrata**. **Socrata** was founded in 2007 by Kevin Merritt. Their mission is to make government data discoverable and usable for people to use. The data that they provide range from the city, county, state, and federal level organizations. Our project specifically utilizes *Socrata*'s **King County Sheriff's Office**. This data set was last updated on **November 30th, 2017** and has data from the year 2000. Although, this data has information about crime reported incidents since 2000, the bulk of the data lies in the years of **2016 & 2017**. This project will dive into the data and provide **interactive visualizations** that will help our stakeholders better understand this data. Each of our visualizations will be located on its own respective page or tab and will represent the data in unique ways that aim to help answer our stakholders' questions.
