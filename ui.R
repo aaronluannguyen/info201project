@@ -4,6 +4,10 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
+# Make days into a list
+days.vector <- data$day_of_week
+days.list <- as.list(days.vector)
+names(days.list) <- days.vector
 
 # Get the unique city names of King County
 cities.vector <- sort(unique(police.call.data$city))
@@ -103,7 +107,7 @@ shinyUI(fluidPage(
                       h1("Police Activity During the Week"),
                       sidebarLayout(
                         sidebarPanel(
-                          selectInput('days_of_week', 'day_of_week', choices = c("All", data$day_of_week), width = "100%"))
+                          selectInput('days_of_week', 'day_of_week', choices = days.list))
                       ),
                       mainPanel(
                         plotOutput("keivon_pie")
