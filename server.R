@@ -99,7 +99,7 @@ shinyServer(function(input, output) {
   
   output$omidscatter <- renderPlotly({
     omid.data <- data
-    Crimes_By_City(omid.data, input$omidcityname)
+    CrimesByCity(omid.data, input$omidcityname)
   })
   
   ### ABOUT ################################################################

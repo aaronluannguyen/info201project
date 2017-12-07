@@ -4,7 +4,7 @@ library(ggplot2)
 library(plotly)
 library(stringr)
 
-Crimes_By_City <- function(data, user.city){
+CrimesByCity <- function(data, user.city){
   # Filter data for the input city
   city.data <- filter(data, city == user.city)
 
