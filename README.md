@@ -1,6 +1,6 @@
 Our Group Project for INFO 201
 <br>
-link to our Shiny app: https://aaron-nguyen.shinyapps.io/kcsheriffactivity/
+Link to our Shiny app: https://aaron-nguyen.shinyapps.io/kcsheriffactivity/
 
 # **King County Sheriff Activity**
 
