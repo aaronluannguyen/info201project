@@ -21,7 +21,7 @@ output: html_document
 
 ### **Chianson Siu**
 **Primary Role** <br>
-- Building the **_Call Frequency_** tab of our Shiny app
+- Building the **_Incidents by Time of Day_** tab of our Shiny app
 <br>
 
 **Other Contributions** <br>
