@@ -5,8 +5,8 @@ account: aaron-nguyen
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 245571
-bundleId: 1120847
+bundleId: 1120871
 url: https://aaron-nguyen.shinyapps.io/kcsheriffactivity/
-when: 1512647068.91782
+when: 1512647982.78513
 asMultiple: FALSE
 asStatic: FALSE
