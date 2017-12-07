@@ -76,7 +76,7 @@ shinyUI(fluidPage(
                       )
                        ),
              
-             tabPanel("Incidents by Week Days",
+             tabPanel("Incidents by Week Day",
                       h1("KC Sheriff Activity During the Week"),
                       sidebarLayout(
                         sidebarPanel(
@@ -111,8 +111,7 @@ shinyUI(fluidPage(
                       ),
              
              tabPanel("Our Team", 
-                      includeMarkdown("RMarkdownFile.rmd"),
-                      
+                      includeMarkdown("OurTeam.Rmd")
                     )
              
   )
