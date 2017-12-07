@@ -26,7 +26,7 @@ Crimes_By_City <- function(data, user.city){
   # Create plotly bar graph
   result.graph <- (plot_ly(
     x = ~x, y = ~y, type = 'bar', marker = list(color = "#696969")) %>%
-      layout(title = paste("911 Call Distribution in", str_to_title(user.city), sep = " "),
+      layout(title = paste("Reported Incidents in", str_to_title(user.city), sep = " "),
              margin = list(b = 75),
              xaxis = list(title = isolate("Types of Crimes Reported"), tickangle = 0, tickfont = list(size = 10)),
              yaxis = list(title = "Counts of Reported Incidents"))
