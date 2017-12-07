@@ -102,11 +102,6 @@ shinyServer(function(input, output) {
     CrimesByCity(omid.data, input$omidcityname)
   })
   
-  ### ABOUT ################################################################
-  
-  
-  
-
 })
 
 
