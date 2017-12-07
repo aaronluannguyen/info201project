@@ -12,7 +12,7 @@ source("scripts/clean_data_chianson.R")
 source("scripts/Crimes_By_City.R")
 source("scripts/time_filter_chianson.R")
 source("scripts/Crimes_By_City.R")
-source("scripts/pie_chart_keivon.r")
+source("script/pie_chart_Keivon")
 
 # Load necessary libraries 
 library(shiny)
@@ -21,7 +21,6 @@ library(ggplot2)
 library(plotly)
 library(leaflet)
 library(DT)
-library(scales)
 
 # Load king county police data 
 # Remember to set working directory in console to this project
@@ -96,7 +95,7 @@ shinyServer(function(input, output) {
 
   output$keivon_pie <- renderPlot({
     keivon.data <- data
-    pie(keivon.data, input$days_of_week)
+    pie_chart_keivon(keivon.data, input$days_of_week)
   })
   
   ### OMID #################################################################
@@ -110,7 +109,14 @@ shinyServer(function(input, output) {
   
   
   
-
+  
+  
+  
+  
+  
+  
+  
+  
 })
 
 
