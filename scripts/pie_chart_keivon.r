@@ -2,25 +2,32 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
+source("scripts/clean_data_chianson.R")
 
 pie <- function(user.data, crime_type){
-  
-  new.data <- user.data %>% 
-    filter(parent_incident_type == crime_type) %>% 
-    group_by(day_of_week) %>% 
+
+  new.data <- user.data %>%
+    filter(parent_incident_type == crime_type) %>%
+    group_by(day_of_week) %>%
     summarise(count = n())
-  
-  
+
+  days.ordered <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+  new.data <- arrange(new.data, match(day_of_week, days.ordered))
+
+
   p <- plot_ly(new.data, labels = ~day_of_week, values = ~count, type = 'pie',
                textposition = 'inside',
                textinfo = 'label+percent',
                insidetextfont = list(color = '#FFFFFF'),
                hoverinfo = 'text+text1',
                text = ~paste(day_of_week, "\n", count, "incidents")
-  ) %>% 
+  ) %>%
     layout(title ="Police Activity During the Week", showlegend = T,
            xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
            yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-  
-  return(p)      
+
+  return(p)
 }
+
+police.data <- CleanseData("data/King_County_Police_Data.csv")
+temp <- pie(police.data, "Theft")
