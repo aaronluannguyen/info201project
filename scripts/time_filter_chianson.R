@@ -19,6 +19,7 @@ GetTimeFilterCity <- function(city.crime){
         x = result.data$hour_of_day,
         y = result.data$Freq,
         type = "bar",
+        marker = list(color = "#696969"),
         text = paste0("Hour: ", result.data$hour_of_day, "\n", "Calls: ", result.data$Freq),
         hoverinfo = "text"
     ) %>%
